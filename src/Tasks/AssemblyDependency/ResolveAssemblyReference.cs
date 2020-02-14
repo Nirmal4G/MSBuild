@@ -257,7 +257,7 @@ namespace Microsoft.Build.Tasks
         ///         attribute is present it can save time since the assembly file won't need
         ///         to be opened to get the fusion name.
         ///     bool ExternallyResolved [default=false] -- indicates that the reference and its
-        ///        dependencies are resolved by an external system (commonly from nuget assets) and
+        ///        dependencies are resolved by an external system (commonly from NuGet assets) and
         ///        so several steps can be skipped as an optimization: finding dependencies,
         ///        satellite assemblies, etc.
         /// </summary>

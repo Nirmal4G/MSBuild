@@ -836,7 +836,7 @@ namespace Microsoft.Build.Tasks
 
         /// <summary>
         /// Indicates that the reference is primary and has ExternallyResolved=true metadata to denote that
-        /// it was resolved by an external system (commonly from nuget). Such a system has already provided a
+        /// it was resolved by an external system (commonly from NuGet). Such a system has already provided a
         /// resolved closure as primary references and therefore we can skip the expensive closure walk.
         /// </summary>
         internal bool ExternallyResolved { get; private set; }

@@ -14,7 +14,7 @@ namespace Microsoft.Build.UnitTests.Evaluation
             var collectionWithDefaultCache = new ProjectCollection();
             collectionWithDefaultCache.ProjectRootElementCache.ShouldBeOfType<ProjectRootElementCache>();
 
-            const string envKey = "MsBuildUseSimpleProjectRootElementCacheConcurrency";
+            const string envKey = "MSBuildUseSimpleProjectRootElementCacheConcurrency";
 
             using (TestEnvironment env = TestEnvironment.Create())
             {

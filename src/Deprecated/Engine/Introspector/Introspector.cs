@@ -256,7 +256,7 @@ namespace Microsoft.Build.BuildEngine
         /// </summary>
         internal void SystemShutdown()
         {
-	    ErrorUtilities.LaunchMsBuildDebuggerOnFatalError();
+	    ErrorUtilities.LaunchMSBuildDebuggerOnFatalError();
             nodeManager.ShutdownNodes(Node.NodeShutdownLevel.ErrorShutdown);
         }
 

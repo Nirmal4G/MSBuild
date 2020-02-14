@@ -210,7 +210,7 @@ Samples/MultiprocessBuild/PortableTask.dll
 # Dotnet Core SDK
 .dotnet/
 
-# Repo nuget cache
+# Repo NuGet cache
 .packages/
 
 # Optimization Data folder

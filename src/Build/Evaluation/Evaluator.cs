@@ -221,7 +221,7 @@ namespace Microsoft.Build.Evaluation
                 buildEventContext,
                 string.IsNullOrEmpty(projectRootElement.ProjectFileLocation.File) ? "(null)" : projectRootElement.ProjectFileLocation.File);
 
-            // If someone sets the 'MsBuildLogPropertyTracking' environment variable to a non-zero value, wrap property accesses for event reporting.
+            // If someone sets the 'MSBuildLogPropertyTracking' environment variable to a non-zero value, wrap property accesses for event reporting.
             if (Traits.Instance.LogPropertyTracking > 0)
             {
                 // Wrap the IEvaluatorData<> object passed in.

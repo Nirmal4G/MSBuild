@@ -1783,7 +1783,7 @@ true, true, true)]
         private static string EmptyIfNull(string aString) => aString ?? string.Empty;
 
         [Fact]
-        public void ReloadThrowsOnInvalidMsBuildSyntax()
+        public void ReloadThrowsOnInvalidMSBuildSyntax()
         {
             var unknownAttribute =
 @"<Project xmlns=`msbuildnamespace`>

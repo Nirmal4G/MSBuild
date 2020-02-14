@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <TargetFramework>$(FullFrameworkTFM)</TargetFramework>
-    <NuspecFile>MSBuild.Engine.Corext.nuspec</NuspecFile>
+    <NuspecFile>MSBuild.Engine.CoreXT.nuspec</NuspecFile>
     <PlatformTarget>x86</PlatformTarget>
 
     <IsShipping>false</IsShipping>

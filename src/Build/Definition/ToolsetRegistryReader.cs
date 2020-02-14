@@ -132,7 +132,7 @@ namespace Microsoft.Build.Evaluation
             {
                 string defaultToolsVersion = null;
 
-                // We expect to find the MsBuildOverrideTasksPath value under a registry key named for our
+                // We expect to find the MSBuildOverrideTasksPath value under a registry key named for our
                 // version, e.g., "4.0"
                 using (RegistryKeyWrapper defaultToolsVersionKey = _msbuildRegistryWrapper.OpenSubKey(Constants.AssemblyVersion))
                 {
@@ -155,7 +155,7 @@ namespace Microsoft.Build.Evaluation
             {
                 string defaultOverrideToolsVersion = null;
 
-                // We expect to find the MsBuildOverrideTasksPath value under a registry key named for our
+                // We expect to find the MSBuildOverrideTasksPath value under a registry key named for our
                 // version, e.g., "12.0"
                 using (RegistryKeyWrapper defaultOverrideToolsVersionKey = _msbuildRegistryWrapper.OpenSubKey(Constants.AssemblyVersion))
                 {

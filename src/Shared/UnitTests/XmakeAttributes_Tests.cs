@@ -34,7 +34,7 @@ namespace Microsoft.Build.UnitTests
             Assert.False(XMakeAttributes.IsBadlyCasedSpecialTaskAttribute(XMakeAttributes.msbuildRuntime));
             Assert.True(XMakeAttributes.IsBadlyCasedSpecialTaskAttribute("continueOnError"));
             Assert.True(XMakeAttributes.IsBadlyCasedSpecialTaskAttribute("condition"));
-            Assert.True(XMakeAttributes.IsBadlyCasedSpecialTaskAttribute("MsbuildRuntime"));
+            Assert.True(XMakeAttributes.IsBadlyCasedSpecialTaskAttribute("MSBuildRuntime"));
             Assert.True(XMakeAttributes.IsBadlyCasedSpecialTaskAttribute("msbuildarchitecture"));
         }
 

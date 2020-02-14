@@ -56,7 +56,7 @@ namespace Microsoft.Build.UnitTests
         [InlineData("abc", "x", "y", StringComparison.CurrentCulture, "abc")]
         [InlineData("", "x", "y", StringComparison.CurrentCulture, "")]
 
-        [InlineData(@"$(MsBuildExtensionsPath)\build.props", "$(MSBuildExtensionsPath)", @"c:\build", StringComparison.OrdinalIgnoreCase, @"c:\build\build.props")]
+        [InlineData(@"$(MSBuildExtensionsPath)\build.props", "$(MSBuildExtensionsPath)", @"c:\build", StringComparison.OrdinalIgnoreCase, @"c:\build\build.props")]
         public void ReplaceWithStringComparerTest(string aString, string oldValue, string newValue, StringComparison stringComparison, string expectedReplace)
         {
             aString.Replace(oldValue, newValue, stringComparison).ShouldBe(expectedReplace);

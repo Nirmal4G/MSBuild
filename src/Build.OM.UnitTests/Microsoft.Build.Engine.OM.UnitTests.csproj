@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <!-- GeneratePathProperty currently isn't enabled for PackageDownload. -->
-    <Content Condition="'$(MSBuildRuntimeType)' != 'Core' and '$(Configuration)' == 'Release'" Include="$(NuGetPackageRoot)\nuget.commandline\$(NuGetCommandLinePackageVersion)\tools\NuGet.exe" CopyToOutputDirectory="PreserveNewest" Link="nuget\NuGet.exe" />
+    <Content Condition="'$(MSBuildRuntimeType)' != 'Core' and '$(Configuration)' == 'Release'" Include="$(NuGetPackageRoot)\nuget.commandline\$(NuGetCommandLinePackageVersion)\tools\NuGet.exe" CopyToOutputDirectory="PreserveNewest" Link="NuGet\NuGet.exe" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETFramework'">

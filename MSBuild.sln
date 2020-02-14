@@ -61,7 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localization", "src\Package
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevDivPackage", "src\Package\DevDivPackage\DevDivPackage.csproj", "{EDBFE32E-F264-4F01-97C3-B58F8B9165C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSBuild.Engine.Corext", "src\Package\MSBuild.Engine.Corext\MSBuild.Engine.Corext.csproj", "{3D67E4FF-6EC6-4FE7-82F1-0DACE1E399A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSBuild.Engine.CoreXT", "src\Package\MSBuild.Engine.CoreXT\MSBuild.Engine.CoreXT.csproj", "{3D67E4FF-6EC6-4FE7-82F1-0DACE1E399A7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSBuild.Bootstrap", "src\MSBuild.Bootstrap\MSBuild.Bootstrap.csproj", "{CEAEE4FE-9298-443B-AFC5-0F72472484B6}"
 EndProject

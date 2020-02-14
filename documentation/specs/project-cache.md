@@ -69,7 +69,7 @@ This change also simplifies and unifies user experiences. MSBuild works the same
 <ProjectCachePlugin Include="..\..\QuickbuildProjectCachePlugin.dll">
 ```
 - Plugin acquisition
-  - Via the dependency manager of choice. PackageReference / Nuget for managed projects, pacman / vcpkg / nuget on packages.config for C++. The package contents injects the plugin item into the project import graph.
+  - Via the dependency manager of choice. PackageReference / NuGet for managed projects, pacman / vcpkg / NuGet on packages.config for C++. The package contents injects the plugin item into the project import graph.
 - Defining the "graph" when static graph is not available
   - Plugins need to know the top level entry point for various reasons, but without a static graph the entry points need to be explicitly declared or inferred.
   - Entry points are set via `ProjectCacheDescriptor.EntryPoints`.
@@ -105,7 +105,7 @@ This change also simplifies and unifies user experiences. MSBuild works the same
   - Absolute paths will likely break the build, since they'd be captured on the machine that writes to the cache.
 - Slow connections. In a coffee shop it might be faster to build everything instead of downloading from the cache. Consider racing plugin checks and building: if the bottom up build traversal reaches a node that's still querying the cache, cancel the cache query and build the node instead.
 - Inferring what targets to run on each node when using /graph
-  - Msbuild /graph requires that the [target inference protocol](https://github.com/dotnet/msbuild/blob/master/documentation/specs/static-graph.md#inferring-which-targets-to-run-for-a-project-within-the-graph) is good enough.
+  - MSBuild /graph requires that the [target inference protocol](https://github.com/dotnet/msbuild/blob/master/documentation/specs/static-graph.md#inferring-which-targets-to-run-for-a-project-within-the-graph) is good enough.
 - Small repos will probably be slower with plugin implementations that access the network. Remote distribution and caching will only be worth it for repos that are large enough.
 
 # Future work

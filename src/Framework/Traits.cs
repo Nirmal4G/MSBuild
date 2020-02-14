@@ -41,20 +41,20 @@ namespace Microsoft.Build.Framework
         /// <summary>
         /// Do not expand wildcards that match a certain pattern
         /// </summary>
-        public readonly bool UseLazyWildCardEvaluation = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MsBuildSkipEagerWildCardEvaluationRegexes"));
+        public readonly bool UseLazyWildCardEvaluation = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MSBuildSkipEagerWildCardEvaluationRegexes"));
         public readonly bool LogExpandedWildcards = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MSBUILDLOGEXPANDEDWILDCARDS"));
 
         /// <summary>
         /// Cache file existence for the entire process
         /// </summary>
-        public readonly bool CacheFileExistence = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MsBuildCacheFileExistence"));
+        public readonly bool CacheFileExistence = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MSBuildCacheFileExistence"));
 
-        public readonly bool UseSimpleProjectRootElementCacheConcurrency = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MsBuildUseSimpleProjectRootElementCacheConcurrency"));
+        public readonly bool UseSimpleProjectRootElementCacheConcurrency = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MSBuildUseSimpleProjectRootElementCacheConcurrency"));
 
         /// <summary>
         /// Cache wildcard expansions for the entire process
         /// </summary>
-        public readonly bool MSBuildCacheFileEnumerations = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MsBuildCacheFileEnumerations"));
+        public readonly bool MSBuildCacheFileEnumerations = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MSBuildCacheFileEnumerations"));
 
         public readonly bool EnableAllPropertyFunctions = Environment.GetEnvironmentVariable("MSBUILDENABLEALLPROPERTYFUNCTIONS") == "1";
 
@@ -89,7 +89,7 @@ namespace Microsoft.Build.Framework
         /// <summary>
         /// Log property tracking information.
         /// </summary>
-        public readonly int LogPropertyTracking = ParseIntFromEnvironmentVariableOrDefault("MsBuildLogPropertyTracking", 0); // Default to logging nothing via the property tracker.
+        public readonly int LogPropertyTracking = ParseIntFromEnvironmentVariableOrDefault("MSBuildLogPropertyTracking", 0); // Default to logging nothing via the property tracker.
 
         /// <summary>
         /// When evaluating items, this is the minimum number of items on the running list to use a dictionary-based remove optimization.
@@ -113,7 +113,7 @@ namespace Microsoft.Build.Framework
         /// <summary>
         /// Do not log command line information to build loggers. Useful to unbreak people who parse the msbuild log and who are unwilling to change their code.
         /// </summary>
-        public readonly bool DoNotSendDeferredMessagesToBuildManager = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MsBuildDoNotSendDeferredMessagesToBuildManager"));
+        public readonly bool DoNotSendDeferredMessagesToBuildManager = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MSBuildDoNotSendDeferredMessagesToBuildManager"));
 
         /// <summary>
         /// https://github.com/dotnet/msbuild/pull/4975 started expanding qualified metadata in Update operations. Before they'd expand to empty strings.

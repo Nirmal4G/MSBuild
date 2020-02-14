@@ -2703,7 +2703,7 @@ namespace Microsoft.Build.UnitTests.Evaluation
         /// </summary>
         [Fact]
         [Trait("Category", "mono-osx-failing")]
-        public void VerifyMsBuildNodeCountReservedProperty()
+        public void VerifyMSBuildNodeCountReservedProperty()
         {
             string content = ObjectModelHelpers.CleanupFileContents(@"
                              <Project ToolsVersion=""msbuilddefaulttoolsversion"" xmlns='msbuildnamespace'>
@@ -2736,10 +2736,10 @@ namespace Microsoft.Build.UnitTests.Evaluation
 #endif
 
         /// <summary>
-        /// Verify when no node count is passed that we evaluate MsBuildNodeCount to 1
+        /// Verify when no node count is passed that we evaluate MSBuildNodeCount to 1
         /// </summary>
         [Fact]
-        public void VerifyMsBuildNodeCountReservedPropertyDefault()
+        public void VerifyMSBuildNodeCountReservedPropertyDefault()
         {
             string content = ObjectModelHelpers.CleanupFileContents(@"
                              <Project ToolsVersion=""msbuilddefaulttoolsversion"" xmlns='msbuildnamespace'>
@@ -2764,12 +2764,12 @@ namespace Microsoft.Build.UnitTests.Evaluation
         /// Verify that the programfiles32 property points to the correct location
         /// </summary>
         [Fact]
-        public void VerifyMsbuildProgramFiles32ReservedProperty()
+        public void VerifyMSBuildProgramFiles32ReservedProperty()
         {
             string content = ObjectModelHelpers.CleanupFileContents(@"
                              <Project ToolsVersion=""msbuilddefaulttoolsversion"" xmlns='msbuildnamespace'>
                                 <PropertyGroup>
-                                    <abcdef>$(MsBuildProgramFiles32)</abcdef>
+                                    <abcdef>$(MSBuildProgramFiles32)</abcdef>
                                 </PropertyGroup>
 
                                 <Target Name='t'>
@@ -4808,7 +4808,7 @@ namespace Microsoft.Build.UnitTests.Evaluation
             using (TestEnvironment env = TestEnvironment.Create())
             {
                 if (!string.IsNullOrWhiteSpace(envVarValue))
-                    env.SetEnvironmentVariable("MsBuildLogPropertyTracking", envVarValue);
+                    env.SetEnvironmentVariable("MSBuildLogPropertyTracking", envVarValue);
 
                 env.SetEnvironmentVariable("DEFINED_ENVIRONMENT_VARIABLE", "It's Defined!");
                 env.SetEnvironmentVariable("DEFINED_ENVIRONMENT_VARIABLE2", "It's also Defined!");

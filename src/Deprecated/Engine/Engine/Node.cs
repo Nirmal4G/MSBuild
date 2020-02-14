@@ -439,7 +439,7 @@ namespace Microsoft.Build.BuildEngine
                     // rethrow the original exception
                     string message = ResourceUtilities.FormatResourceString("FatalErrorOnChildNode", nodeId, ex.Message);
 
-                    ErrorUtilities.LaunchMsBuildDebuggerOnFatalError();
+                    ErrorUtilities.LaunchMSBuildDebuggerOnFatalError();
 
                     throw new Exception(message, originalException);
                 }
@@ -469,7 +469,7 @@ namespace Microsoft.Build.BuildEngine
 
             string message = ResourceUtilities.FormatResourceString("FatalErrorOnChildNode", nodeId, originalException.Message);
 
-            ErrorUtilities.LaunchMsBuildDebuggerOnFatalError();
+            ErrorUtilities.LaunchMSBuildDebuggerOnFatalError();
 
             throw new Exception(message, originalException);
         }

@@ -260,12 +260,12 @@ namespace Microsoft.Build.UnitTests.ResolveAssemblyReference_Tests
         protected static readonly string s_portableDllPath = Path.Combine(s_rootPathPrefix, "SystemRuntime", "Portable.dll");
         protected static readonly string s_systemRuntimeDllPath = Path.Combine(s_rootPathPrefix, "SystemRuntime", "System.Runtime.dll");
 
-        protected static readonly string s_dependsOnNuGet_ADllPath = Path.Combine(s_rootPathPrefix, "DependsOnNuget", "A.dll");
-        protected static readonly string s_dependsOnNuGet_NDllPath = Path.Combine(s_rootPathPrefix, "DependsOnNuget", "N.dll");
-        protected static readonly string s_dependsOnNuGet_NExePath = Path.Combine(s_rootPathPrefix, "DependsOnNuget", "N.exe");
-        protected static readonly string s_dependsOnNuGet_NWinMdPath = Path.Combine(s_rootPathPrefix, "DependsOnNuget", "N.winmd");
+        protected static readonly string s_dependsOnNuGet_ADllPath = Path.Combine(s_rootPathPrefix, "DependsOnNuGet", "A.dll");
+        protected static readonly string s_dependsOnNuGet_NDllPath = Path.Combine(s_rootPathPrefix, "DependsOnNuGet", "N.dll");
+        protected static readonly string s_dependsOnNuGet_NExePath = Path.Combine(s_rootPathPrefix, "DependsOnNuGet", "N.exe");
+        protected static readonly string s_dependsOnNuGet_NWinMdPath = Path.Combine(s_rootPathPrefix, "DependsOnNuGet", "N.winmd");
 
-        protected static readonly string s_nugetCache_N_Lib_NDllPath = Path.Combine(s_rootPathPrefix, "NugetCache", "N", "lib", "N.dll");
+        protected static readonly string s_nugetCache_N_Lib_NDllPath = Path.Combine(s_rootPathPrefix, "NuGetCache", "N", "lib", "N.dll");
 
         protected static readonly string s_assemblyFolder_RootPath = Path.Combine(s_rootPathPrefix, "AssemblyFolder");
         protected static readonly string s_assemblyFolder_SomeAssemblyDllPath = Path.Combine(s_assemblyFolder_RootPath, "SomeAssembly.dll");
