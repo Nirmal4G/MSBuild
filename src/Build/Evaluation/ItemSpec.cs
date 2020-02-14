@@ -51,13 +51,13 @@ namespace Microsoft.Build.Evaluation
                 }
             }
 
-            protected override IMSBuildGlob MsBuildGlob
+            protected override IMSBuildGlob MSBuildGlob
             {
                 get
                 {
                     if (InitReferencedItemsIfNecessary() || _msbuildGlob == null)
                     {
-                        _msbuildGlob = CreateMsBuildGlob();
+                        _msbuildGlob = CreateMSBuildGlob();
                     }
 
                     return _msbuildGlob;
@@ -94,10 +94,10 @@ namespace Microsoft.Build.Evaluation
 
             public override IMSBuildGlob ToMSBuildGlob()
             {
-                return MsBuildGlob;
+                return MSBuildGlob;
             }
 
-            protected override IMSBuildGlob CreateMsBuildGlob()
+            protected override IMSBuildGlob CreateMSBuildGlob()
             {
                 if (ReferencedItems.Count == 1)
                 {
@@ -452,7 +452,7 @@ namespace Microsoft.Build.Evaluation
         }
 
         // not a Lazy to reduce memory
-        protected virtual IMSBuildGlob MsBuildGlob => _msbuildGlob ??= CreateMsBuildGlob();
+        protected virtual IMSBuildGlob MSBuildGlob => _msbuildGlob ??= CreateMSBuildGlob();
 
         protected ItemSpecFragment(string textFragment, string projectDirectory)
         {
@@ -488,10 +488,10 @@ namespace Microsoft.Build.Evaluation
 
         public virtual IMSBuildGlob ToMSBuildGlob()
         {
-            return MsBuildGlob;
+            return MSBuildGlob;
         }
 
-        protected virtual IMSBuildGlob CreateMsBuildGlob()
+        protected virtual IMSBuildGlob CreateMSBuildGlob()
         {
             return MSBuildGlob.Parse(ProjectDirectory, EscapingUtilities.UnescapeAll(TextFragment));
         }
