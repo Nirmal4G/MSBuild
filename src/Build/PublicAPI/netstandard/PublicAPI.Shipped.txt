@@ -605,8 +605,8 @@ Microsoft.Build.Evaluation.GlobResult.Excludes.get -> System.Collections.Generic
 Microsoft.Build.Evaluation.GlobResult.GlobResult(Microsoft.Build.Construction.ProjectItemElement itemElement, System.Collections.Generic.IEnumerable<string> includeGlobStrings, Microsoft.Build.Globbing.IMSBuildGlob globWithGaps, System.Collections.Generic.IEnumerable<string> excludeFragmentStrings, System.Collections.Generic.IEnumerable<string> removeFragmentStrings) -> void
 Microsoft.Build.Evaluation.GlobResult.IncludeGlobs.get -> System.Collections.Generic.IEnumerable<string>
 Microsoft.Build.Evaluation.GlobResult.ItemElement.get -> Microsoft.Build.Construction.ProjectItemElement
-Microsoft.Build.Evaluation.GlobResult.MsBuildGlob.get -> Microsoft.Build.Globbing.IMSBuildGlob
-Microsoft.Build.Evaluation.GlobResult.MsBuildGlob.set -> void
+Microsoft.Build.Evaluation.GlobResult.MSBuildGlob.get -> Microsoft.Build.Globbing.IMSBuildGlob
+Microsoft.Build.Evaluation.GlobResult.MSBuildGlob.set -> void
 Microsoft.Build.Evaluation.GlobResult.Removes.get -> System.Collections.Generic.IEnumerable<string>
 Microsoft.Build.Evaluation.GlobResult.Removes.set -> void
 Microsoft.Build.Evaluation.MatchOnMetadataConstants

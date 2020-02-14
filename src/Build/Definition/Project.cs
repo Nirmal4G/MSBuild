@@ -883,7 +883,7 @@ namespace Microsoft.Build.Evaluation
         /// </example>
         /// <remarks>
         /// <para>
-        /// <see cref="GlobResult.MsBuildGlob"/> is a <see cref="IMSBuildGlob"/> that combines all globs in the include element and ignores
+        /// <see cref="GlobResult.MSBuildGlob"/> is a <see cref="IMSBuildGlob"/> that combines all globs in the include element and ignores
         /// all the fragments in the exclude attribute and all the fragments in all Remove elements that apply to the include element.
         /// </para>
         ///
@@ -894,7 +894,7 @@ namespace Microsoft.Build.Evaluation
         /// uberGlob.IsMatch("foo.cs");
         /// ]]>
         /// </code>
-        /// 
+        ///
         /// </remarks>
         /// <returns>
         /// List of <see cref="GlobResult"/>.
@@ -4609,7 +4609,7 @@ namespace Microsoft.Build.Evaluation
         /// <summary>
         /// A <see cref="IMSBuildGlob"/> representing the include globs. It also takes the excludes and relevant removes into consideration.
         /// </summary>
-        public IMSBuildGlob MsBuildGlob { get; set; }
+        public IMSBuildGlob MSBuildGlob { get; set; }
 
         /// <summary>
         /// Gets an <see cref="ISet{String}"/> containing strings that were excluded.
@@ -4629,7 +4629,7 @@ namespace Microsoft.Build.Evaluation
             ItemElement = itemElement;
 
             IncludeGlobs = includeGlobStrings;
-            MsBuildGlob = globWithGaps;
+            MSBuildGlob = globWithGaps;
 
             Excludes = excludeFragmentStrings;
             Removes = removeFragmentStrings;
