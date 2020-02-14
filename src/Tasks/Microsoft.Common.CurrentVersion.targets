@@ -24,8 +24,8 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <ImportUserLocationsByWildcardAfterMicrosoftCommonTargets Condition="'$(ImportUserLocationsByWildcardAfterMicrosoftCommonTargets)' == ''">true</ImportUserLocationsByWildcardAfterMicrosoftCommonTargets>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportBefore\*" Condition="'$(ImportUserLocationsByWildcardBeforeMicrosoftCommonTargets)' == 'true' and exists('$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportBefore')"/>
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportBefore\*" Condition="'$(ImportByWildcardBeforeMicrosoftCommonTargets)' == 'true' and exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportBefore')"/>
+  <Import Project="$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportBefore\*" Condition="'$(ImportUserLocationsByWildcardBeforeMicrosoftCommonTargets)' == 'true' and Exists('$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportBefore')"/>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportBefore\*" Condition="'$(ImportByWildcardBeforeMicrosoftCommonTargets)' == 'true' and Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportBefore')"/>
 
   <Import Project="$(MSBuildProjectFullPath).user" Condition="Exists('$(MSBuildProjectFullPath).user')"/>
 
@@ -78,7 +78,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
     <!-- When working off a packaged reference assemblies, do not go to machine-global locations. This property is target-framework-specific, so it cannot be overridden in msbuild.exe.config once and for all. -->
     <FrameworkPathOverride Condition="'$(EnableFrameworkPathOverride)' != 'false' And '$(FrameworkPathOverride)' == '' And Exists('$(TargetFrameworkRootPath)$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)')">$(TargetFrameworkRootPath)$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)</FrameworkPathOverride>
-    <!-- The FrameworkPathOverride is required for the inproc visual basic compiler to initialize when targeting target frameworks less than 4.0. If .net 2.0 is not installed then the property value above will not provide the location
+    <!-- The FrameworkPathOverride is required for the inproc visual basic compiler to initialize when targeting target frameworks less than 4.0. If .NET 2.0 is not installed then the property value above will not provide the location
              of mscorlib. This is also true if the build author overrides this property to some other directory which does not contain mscorlib.dll. In the case we cannot find mscorlib.dll at the correct location
              we need to find a directory which does contain mscorlib to allow the inproc compiler to initialize and give us the chance to show certain dialogs in the IDE (which only happen after initialization).-->
     <FrameworkPathOverride Condition="'$(EnableFrameworkPathOverride)' != 'false' And '$(FrameworkPathOverride)' == ''">$([Microsoft.Build.Utilities.ToolLocationHelper]::GetPathToStandardLibraries($(TargetFrameworkIdentifier), $(TargetFrameworkVersion), $(TargetFrameworkProfile), $(PlatformTarget), $(TargetFrameworkRootPath), $(TargetFrameworkFallbackSearchPaths)))</FrameworkPathOverride>
@@ -701,7 +701,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
   <ItemGroup Condition=" '$(DefineCommonReferenceSchemas)' == 'true' ">
     <!-- Assembly references -->
-    <PropertyPageSchema Include="$(CommonXamlResourcesDirectory)assemblyreference.xaml">
+    <PropertyPageSchema Include="$(CommonXamlResourcesDirectory)AssemblyReference.xaml">
       <Context>;BrowseObject</Context>
     </PropertyPageSchema>
     <PropertyPageSchema Include="$(CommonXamlResourcesDirectory)ResolvedAssemblyReference.xaml">
@@ -1696,7 +1696,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   -->
   <Target Name="_GetProjectReferenceTargetFrameworkProperties" DependsOnTargets="_AddOutputPathToGlobalPropertiesToRemove">
     <!--
-      Select the moniker to send to each project reference  if not already set. NugetTargetMoniker (NTM) is preferred by default over
+      Select the moniker to send to each project reference  if not already set. NuGetTargetMoniker (NTM) is preferred by default over
       TargetFrameworkMoniker (TFM) because it is required to disambiguate the UWP case where TFM is fixed at .NETCore,Version=v5.0 and
       has floating NTM=UAP,Version=vX.Y.Z. However, in other cases (classic PCLs), NTM contains multiple values and that will cause the MSBuild
       invocation below to fail by passing invalid properties. Therefore we do not use the NTM if it contains a semicolon.
@@ -4187,7 +4187,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       If apphost based built EXE is found, use that as the Launcher.exe's entry point otherwise
       use the built DLL as the entry point
     -->
-    <ItemGroup Condition="'$(UseAppHost)' == 'true' and '$(_IsExecutable)' == 'true' and exists('$(AppHostIntermediatePath)')">
+    <ItemGroup Condition="'$(UseAppHost)' == 'true' and '$(_IsExecutable)' == 'true' and Exists('$(AppHostIntermediatePath)')">
       <EntryPointForLauncher Include="$(AppHostIntermediatePath)" TargetPath="$(AssemblyName).exe"/>
       <ContentWithTargetPath Include="@(EntryPointForLauncher)"/>
     </ItemGroup>
@@ -4245,7 +4245,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
         SigningTarget="$(AppHostIntermediatePath)"
         TargetFrameworkVersion="$(TargetFrameworkVersion)"
         TargetFrameworkIdentifier="$(TargetFrameworkIdentifier)"
-        Condition="'$(_DeploymentSignClickOnceManifests)'=='true' and '$(UseAppHost)' == 'true' and '$(PublishSingleFile)' != 'true' and '$(_IsExecutable)' == 'true' and exists('$(AppHostIntermediatePath)')" />
+        Condition="'$(_DeploymentSignClickOnceManifests)'=='true' and '$(UseAppHost)' == 'true' and '$(PublishSingleFile)' != 'true' and '$(_IsExecutable)' == 'true' and Exists('$(AppHostIntermediatePath)')" />
 
     <!--
       Replace entry-point with Launcher and move original project's entry-point to content group.
@@ -4316,7 +4316,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       <_SGenDllsRelatedToCurrentDll Include="@(SerializationAssembly->'%(FullPath)')" Condition="'%(Extension)' == '.dll'"/>
     </ItemGroup>
 
-    <ItemGroup Condition="!exists('$(ProjectLockFile)')">
+    <ItemGroup Condition="!Exists('$(ProjectLockFile)')">
       <_CopyLocalFalseRefPaths Include="@(ReferencePath)" Condition="'%(CopyLocal)' == 'false'" />
       <_CopyLocalFalseRefPathsWithExclusion Include="@(_CopyLocalFalseRefPaths)"
                                             Exclude="@(ReferenceCopyLocalPaths);@(_NETStandardLibraryNETFrameworkLib)" />
@@ -4341,7 +4341,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <!-- Include the following files in clickonce manifest only if single file publish is false -->
     <ItemGroup Condition="'$(PublishSingleFile)' != 'true'">
       <!--
-      _ClickOnceRuntimeCopyLocalItems group contains any runtimes folder assets of Nuget packages that are not included in
+      _ClickOnceRuntimeCopyLocalItems group contains any runtimes folder assets of NuGet packages that are not included in
       _DeploymentReferencePaths (e.g. pdbs). They are populated from the RuntimeTargetsCopyLocalItems and NativeCopyLocalItems
       group that contain the RID-specific assets that go in runtimes folder on publish. They are output groups of the
       ResolvePackageAssets target in dotnet/sdk
@@ -4365,7 +4365,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       <_ClickOnceFiles Include="@(ContentWithTargetPath)" Condition="'%(Identity)'=='@(_FileAssociationIcons)'"/>
     </ItemGroup>
 
-    <!-- For single file publish in .net core app, sign the SF EXE if signing is enabled -->
+    <!-- For single file publish in .NET Core app, sign the SF EXE if signing is enabled -->
     <SignFile
       CertificateThumbprint="$(_DeploymentResolvedManifestCertificateThumbprint)"
       TimestampUrl="$(ManifestTimestampUrl)"
@@ -6667,7 +6667,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
   <Import Project="$(CustomAfterMicrosoftCommonTargets)" Condition="'$(CustomAfterMicrosoftCommonTargets)' != '' and Exists('$(CustomAfterMicrosoftCommonTargets)')"/>
 
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportAfter\*" Condition="'$(ImportByWildcardAfterMicrosoftCommonTargets)' == 'true' and exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportAfter')"/>
-  <Import Project="$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportAfter\*" Condition="'$(ImportUserLocationsByWildcardAfterMicrosoftCommonTargets)' == 'true' and exists('$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportAfter')"/>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportAfter\*" Condition="'$(ImportByWildcardAfterMicrosoftCommonTargets)' == 'true' and Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportAfter')"/>
+  <Import Project="$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportAfter\*" Condition="'$(ImportUserLocationsByWildcardAfterMicrosoftCommonTargets)' == 'true' and Exists('$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.targets\ImportAfter')"/>
 
 </Project>
