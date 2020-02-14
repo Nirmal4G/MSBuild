@@ -1596,7 +1596,7 @@ namespace Microsoft.Build.Evaluation
             pathsToSearch[0] = prop?.EvaluatedValue;                       // The actual value of the property, with no fallbacks
             fallbackSearchPathMatch.SearchPaths.CopyTo(pathsToSearch, 1);  // The list of fallbacks, in order
 
-            string extensionPropertyRefAsString = fallbackSearchPathMatch.MsBuildPropertyFormat;
+            string extensionPropertyRefAsString = fallbackSearchPathMatch.MSBuildPropertyFormat;
 
             _evaluationLoggingContext.LogComment(MessageImportance.Low, "SearchPathsForMSBuildExtensionsPath",
                                         extensionPropertyRefAsString,
@@ -2503,7 +2503,7 @@ namespace Microsoft.Build.Evaluation
                 string extensionsPathPropValue = extensionsPathProp.EvaluatedValue;
                 importExpandedWithDefaultPath =
                     _expander.ExpandIntoStringLeaveEscaped(
-                        importElement.Project.Replace(searchPathMatch.MsBuildPropertyFormat, extensionsPathPropValue),
+                        importElement.Project.Replace(searchPathMatch.MSBuildPropertyFormat, extensionsPathPropValue),
                         ExpanderOptions.ExpandProperties, importElement.ProjectLocation);
 
                 relativeProjectPath = FileUtilities.MakeRelative(extensionsPathPropValue, importExpandedWithDefaultPath);
@@ -2528,14 +2528,14 @@ namespace Microsoft.Build.Evaluation
                 "ImportedProjectFromExtensionsPathNotFoundFromAppConfig",
                 importExpandedWithDefaultPath,
                 relativeProjectPath,
-                searchPathMatch.MsBuildPropertyFormat,
+                searchPathMatch.MSBuildPropertyFormat,
                 stringifiedListOfSearchPaths,
                 configLocation);
 #else
             ProjectErrorUtilities.ThrowInvalidProject(importElement.ProjectLocation, "ImportedProjectFromExtensionsPathNotFound",
                                                         importExpandedWithDefaultPath,
                                                         relativeProjectPath,
-                                                        searchPathMatch.MsBuildPropertyFormat,
+                                                        searchPathMatch.MSBuildPropertyFormat,
                                                         stringifiedListOfSearchPaths);
 #endif
         }
