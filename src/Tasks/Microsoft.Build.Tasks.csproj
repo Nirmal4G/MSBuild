@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="system.design\system.design.txt">
+    <EmbeddedResource Include="System.Design\System.Design.txt">
       <Type>Resx</Type>
       <WithCulture>false</WithCulture>
       <ManifestResourceName>%(Filename)</ManifestResourceName>
@@ -503,7 +503,7 @@
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="System.Design.cs" />
-    <Compile Include="system.design\stronglytypedresourcebuilder.cs" />
+    <Compile Include="System.Design\StronglyTypedResourceBuilder.cs" />
     <Compile Include="TaskExtension.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -808,7 +808,7 @@
     <EmbeddedResource Include="BootstrapperUtil\xmltoconfig.xsl">
       <LogicalName>Microsoft.Build.Tasks.Deployment.Bootstrapper.xmltoconfig.xsl</LogicalName>
     </EmbeddedResource>
-    <TextStringResource Include="system.design\System.Design.txt">
+    <TextStringResource Include="System.Design\System.Design.txt">
       <ResFile>System.Design</ResFile>
       <Sealed>true</Sealed>
       <Visibility>internal</Visibility>
@@ -909,13 +909,13 @@
     <CopyFile Include="XamlRules\ResolvedAssemblyReference.xaml">
       <DestFolder>$(XamlRulesOutputDir)</DestFolder>
     </CopyFile>
-    <CopyFile Include="XamlRules\comreference.xaml">
+    <CopyFile Include="XamlRules\COMReference.xaml">
       <DestFolder>$(XamlRulesOutputDir)</DestFolder>
     </CopyFile>
     <CopyFile Include="XamlRules\ResolvedCOMReference.xaml">
       <DestFolder>$(XamlRulesOutputDir)</DestFolder>
     </CopyFile>
-    <CopyFile Include="XamlRules\projectreference.xaml">
+    <CopyFile Include="XamlRules\ProjectReference.xaml">
       <DestFolder>$(XamlRulesOutputDir)</DestFolder>
     </CopyFile>
     <CopyFile Include="XamlRules\ResolvedProjectReference.xaml">
