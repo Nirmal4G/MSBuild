@@ -594,11 +594,11 @@ namespace Microsoft.Build.UnitTests.BackEnd
         }
 
         /// <summary>
-        /// Make sure when we are doing an in-process build that even if the environment variable MsBuildForwardAllPropertiesFromChild is set that we still
+        /// Make sure when we are doing an in-process build that even if the environment variable MSBuildForwardAllPropertiesFromChild is set that we still
         /// get all of the initial properties.
         /// </summary>
         [Fact]
-        public void InProcMsBuildForwardAllPropertiesFromChild()
+        public void InProcMSBuildForwardAllPropertiesFromChild()
         {
             string contents = CleanupFileContents(@"
 <Project xmlns='msbuildnamespace' ToolsVersion='msbuilddefaulttoolsversion'>
@@ -612,7 +612,7 @@ namespace Microsoft.Build.UnitTests.BackEnd
  </Target>
 </Project>
 ");
-            _env.SetEnvironmentVariable("MsBuildForwardAllPropertiesFromChild", "InitialProperty2;IAMNOTREAL");
+            _env.SetEnvironmentVariable("MSBuildForwardAllPropertiesFromChild", "InitialProperty2;IAMNOTREAL");
 
             BuildRequestData data = GetBuildRequestData(contents);
             BuildResult result = _buildManager.Build(_parameters, data);
@@ -634,11 +634,11 @@ namespace Microsoft.Build.UnitTests.BackEnd
         }
 
         /// <summary>
-        /// Make sure when we launch a child node and set MsBuildForwardAllPropertiesFromChild that we get all of our properties. This needs to happen
-        /// even if the msbuildforwardpropertiesfromchild is set to something.
+        /// Make sure when we launch a child node and set MSBuildForwardAllPropertiesFromChild that we get all of our properties. This needs to happen
+        /// even if the MSBuildForwardPropertiesFromChild is set to something.
         /// </summary>
         [Fact]
-        public void MsBuildForwardAllPropertiesFromChildLaunchChildNode()
+        public void MSBuildForwardAllPropertiesFromChildLaunchChildNode()
         {
             string contents = CleanupFileContents(@"
 <Project xmlns='msbuildnamespace' ToolsVersion='msbuilddefaulttoolsversion'>
@@ -653,8 +653,8 @@ namespace Microsoft.Build.UnitTests.BackEnd
 </Project>
 ");
 
-            _env.SetEnvironmentVariable("MsBuildForwardAllPropertiesFromChild", "InitialProperty2;IAMNOTREAL");
-            _env.SetEnvironmentVariable("MsBuildForwardPropertiesFromChild", "Something");
+            _env.SetEnvironmentVariable("MSBuildForwardAllPropertiesFromChild", "InitialProperty2;IAMNOTREAL");
+            _env.SetEnvironmentVariable("MSBuildForwardPropertiesFromChild", "Something");
 
             var project = CreateProject(contents, null, _projectCollection, false);
             var data = new BuildRequestData(project.FullPath, new Dictionary<string, string>(), MSBuildDefaultToolsVersion, Array.Empty<string>(), null);
@@ -678,7 +678,7 @@ namespace Microsoft.Build.UnitTests.BackEnd
         }
 
         /// <summary>
-        /// Make sure when if the environment variable MsBuildForwardPropertiesFromChild is set to a value and
+        /// Make sure when if the environment variable MSBuildForwardPropertiesFromChild is set to a value and
         /// we launch a child node that we get only that value.
         /// </summary>
 #if RUNTIME_TYPE_NETCORE
@@ -703,7 +703,7 @@ namespace Microsoft.Build.UnitTests.BackEnd
 </Project>
 ");
 
-            _env.SetEnvironmentVariable("MsBuildForwardPropertiesFromChild", "InitialProperty3;IAMNOTREAL");
+            _env.SetEnvironmentVariable("MSBuildForwardPropertiesFromChild", "InitialProperty3;IAMNOTREAL");
             _env.SetEnvironmentVariable("MSBUILDNOINPROCNODE", "1");
 
             // ProjectEvaluationFinished automatically and always forwards all properties, so we'd
@@ -730,7 +730,7 @@ namespace Microsoft.Build.UnitTests.BackEnd
         }
 
         /// <summary>
-        /// Make sure when if the environment variable MsBuildForwardPropertiesFromChild is set to a value and
+        /// Make sure when if the environment variable MSBuildForwardPropertiesFromChild is set to a value and
         /// we launch a child node that we get only that value. Also, make sure that when a project is pulled from the results cache
         /// and we have a list of properties to serialize that we do not crash. This is to prevent a regression of 826594
         /// </summary>
@@ -748,8 +748,8 @@ namespace Microsoft.Build.UnitTests.BackEnd
             string contents = CleanupFileContents($@"
 <Project ToolsVersion='msbuilddefaulttoolsversion' DefaultTargets='Build' xmlns='msbuildnamespace'>
   <Target Name='Build'>
-       <MsBuild Projects='{tempProject}' Targets='BuildA'/>
-       <MsBuild Projects='{tempProject}' Targets='BuildA'/>
+       <MSBuild Projects='{tempProject}' Targets='BuildA'/>
+       <MSBuild Projects='{tempProject}' Targets='BuildA'/>
   </Target>
 </Project>
 ");
@@ -770,7 +770,7 @@ namespace Microsoft.Build.UnitTests.BackEnd
 
             File.WriteAllText(tempProject, projectContents);
 
-            _env.SetEnvironmentVariable("MsBuildForwardPropertiesFromChild", "InitialProperty3;IAMNOTREAL");
+            _env.SetEnvironmentVariable("MSBuildForwardPropertiesFromChild", "InitialProperty3;IAMNOTREAL");
             _env.SetEnvironmentVariable("MSBUILDNOINPROCNODE", "1");
 
             var project = CreateProject(contents, null, _projectCollection, false);
@@ -802,7 +802,7 @@ namespace Microsoft.Build.UnitTests.BackEnd
         }
 
         /// <summary>
-        /// Make sure when if the environment variable MsBuildForwardPropertiesFromChild is set to empty and
+        /// Make sure when if the environment variable MSBuildForwardPropertiesFromChild is set to empty and
         /// we launch a child node that we get no properties
         /// </summary>
 #if MONO
@@ -825,7 +825,7 @@ namespace Microsoft.Build.UnitTests.BackEnd
 </Project>
 ");
 
-            _env.SetEnvironmentVariable("MsBuildForwardPropertiesFromChild", "");
+            _env.SetEnvironmentVariable("MSBuildForwardPropertiesFromChild", "");
             _env.SetEnvironmentVariable("MSBUILDNOINPROCNODE", "1");
 
             var project = CreateProject(contents, null, _projectCollection, false);
@@ -929,7 +929,7 @@ namespace Microsoft.Build.UnitTests.BackEnd
  </Target>
 </Project>
 ");
-            _env.SetEnvironmentVariable("MsBuildForwardPropertiesFromChild", null);
+            _env.SetEnvironmentVariable("MSBuildForwardPropertiesFromChild", null);
             _env.SetEnvironmentVariable("MSBUILDNOINPROCNODE", "1");
 
             var project = CreateProject(contents, null, _projectCollection, false);
@@ -1962,9 +1962,9 @@ namespace Microsoft.Build.UnitTests.BackEnd
             string contents1 = CleanupFileContents($@"
 <Project xmlns='msbuildnamespace' ToolsVersion='msbuilddefaulttoolsversion'>
  <Target Name='test'>
-    <Msbuild Projects='{p2pProject}'>
+    <MSBuild Projects='{p2pProject}'>
       <Output TaskParameter='TargetOutputs' ItemName='P2pOutput'/>
-    </Msbuild>
+    </MSBuild>
 
      <Message Text='Value:@(P2pOutput)' Importance='high'/>
  </Target>
@@ -4178,7 +4178,7 @@ $@"<Project InitialTargets=`Sleep`>
     <ProjectReference Include='{project2}' />
   </ItemGroup>
   <Target Name='Build'>
-    <MsBuild Projects='{project2}' Targets='Build' />
+    <MSBuild Projects='{project2}' Targets='Build' />
   </Target>
 </Project>
 "));
@@ -4219,7 +4219,7 @@ $@"<Project InitialTargets=`Sleep`>
     <ProjectReference Include='{project2}' />
   </ItemGroup>
   <Target Name='Build'>
-    <MsBuild Projects='{project2}' Targets='Build' />
+    <MSBuild Projects='{project2}' Targets='Build' />
   </Target>
 </Project>
 "));
@@ -4251,7 +4251,7 @@ $@"<Project InitialTargets=`Sleep`>
     <ProjectReference Include='{project2}' />
   </ItemGroup>
   <Target Name='Build'>
-    <MsBuild Projects='{project2}' Targets='Build' />
+    <MSBuild Projects='{project2}' Targets='Build' />
   </Target>
 </Project>
 "));
@@ -4294,7 +4294,7 @@ $@"<Project InitialTargets=`Sleep`>
     <ProjectReference Include='{project2}' />
   </ItemGroup>
   <Target Name='Build'>
-    <MsBuild Projects='{project2}' Targets='Build' />
+    <MSBuild Projects='{project2}' Targets='Build' />
   </Target>
 </Project>
 "));
@@ -4305,7 +4305,7 @@ $@"<Project InitialTargets=`Sleep`>
     <ProjectReference Include='{project1}' />
   </ItemGroup>
   <Target Name='Build'>
-    <MsBuild Projects='{project1}' Targets='Build' />
+    <MSBuild Projects='{project1}' Targets='Build' />
   </Target>
 </Project>
 "));

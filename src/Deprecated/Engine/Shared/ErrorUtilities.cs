@@ -12,11 +12,11 @@ namespace Microsoft.Build.BuildEngine.Shared
     /// <owner>RGoel, SumedhK</owner>
     internal static class ErrorUtilities
     {
-        #region LaunchMsBuildDebuggerOnFatalError
+        #region LaunchMSBuildDebuggerOnFatalError
         /// <summary>
         /// Will launch the msbuild debugger when the environment variable "MSBuildLaunchDebuggerOnFatalError" is set
         /// </summary>
-        internal static void LaunchMsBuildDebuggerOnFatalError()
+        internal static void LaunchMSBuildDebuggerOnFatalError()
         {
             string msBuildLaunchDebuggerOnFatalError = Environment.GetEnvironmentVariable("MSBuildLaunchDebuggerOnFatalError");
             if (!String.IsNullOrEmpty(msBuildLaunchDebuggerOnFatalError))

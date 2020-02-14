@@ -93,7 +93,7 @@ namespace Microsoft.Build.Shared
         private const string dotNetFrameworkVersionV20 = "v2.0.50727"; // full Whidbey version to pass to NativeMethodsShared.GetRequestedRuntimeInfo().
         private const string dotNetFrameworkRegistryKeyV20 = dotNetFrameworkSetupRegistryPath + "\\" + dotNetFrameworkVersionV20;
 
-        internal static string dotNetFrameworkVersionFolderPrefixV30 = NativeMethodsShared.IsWindows ? "v3.0" : "3.0"; // v3.0 is for WinFx.
+        internal static string dotNetFrameworkVersionFolderPrefixV30 = NativeMethodsShared.IsWindows ? "v3.0" : "3.0"; // v3.0 is for WinFX.
         private static string s_dotNetFrameworkRegistryKeyV30 = dotNetFrameworkSetupRegistryPath + "\\" + dotNetFrameworkVersionFolderPrefixV30 + "\\Setup";
 
 #if FEATURE_WIN32_REGISTRY
@@ -1273,7 +1273,7 @@ namespace Microsoft.Build.Shared
             /// <summary>
             /// Does this .net framework include MSBuild?
             /// </summary>
-            private readonly bool _hasMsBuild;
+            private readonly bool _hasMSBuild;
 
             /// <summary>
             /// Cached paths of .net framework on different architecture.
@@ -1314,7 +1314,7 @@ namespace Microsoft.Build.Shared
                 this.DotNetFrameworkFolderPrefix = dotNetFrameworkVersionFolderPrefix;
                 this._dotNetFrameworkSdkRegistryToolsKey = dotNetFrameworkSdkRegistryToolsKey;
                 this.DotNetFrameworkSdkRegistryInstallationFolderName = dotNetFrameworkSdkRegistryInstallationFolderName;
-                this._hasMsBuild = hasMSBuild;
+                this._hasMSBuild = hasMSBuild;
                 this._pathsToDotNetFramework = new ConcurrentDictionary<DotNetFrameworkArchitecture, string>();
                 this._pathsToDotNetFrameworkSdkTools = new ConcurrentDictionary<Version, string>();
             }
@@ -1381,7 +1381,7 @@ namespace Microsoft.Build.Shared
                                     architecture);
 
                 // .net was improperly uninstalled: msbuild.exe isn't there
-                if (this._hasMsBuild &&
+                if (this._hasMSBuild &&
                     generatedPathToDotNetFramework != null &&
                     !FileSystems.Default.FileExists(Path.Combine(generatedPathToDotNetFramework, NativeMethodsShared.IsWindows ? "MSBuild.exe" : "mcs.exe")))
                 {

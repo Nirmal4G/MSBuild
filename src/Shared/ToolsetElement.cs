@@ -703,7 +703,7 @@ namespace Microsoft.Build.Evaluation
         }
 
         /// <summary>
-        /// MsBuildOverrideTasksPath attribute on msbuildToolsets element, specifying the path to find msbuildOverrideTasks files
+        /// MSBuildOverrideTasksPath attribute on msbuildToolsets element, specifying the path to find msbuildOverrideTasks files
         /// </summary>
         [ConfigurationProperty("msbuildOverrideTasksPath")] // This string is case sensitive, can't change it
         public string MSBuildOverrideTasksPath

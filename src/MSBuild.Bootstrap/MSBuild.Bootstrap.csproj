@@ -29,7 +29,7 @@
 
   <ItemGroup Condition="'$(MonoBuild)' == 'true'">
     <!-- This is for the second build. Copy over the resolvers from the bootstrap directory, which will include the
-         nuget resolver also -->
+         NuGet resolver also -->
     <Content
             Condition="'$(CreateBootstrap)' != 'true'"
             Include="$(MSBuildBinPath)\SdkResolvers\**\*" LinkBase="SdkResolvers" CopyToOutputDirectory="PreserveNewest" />

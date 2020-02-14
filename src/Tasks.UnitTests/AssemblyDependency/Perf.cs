@@ -104,8 +104,8 @@ namespace Microsoft.Build.UnitTests.ResolveAssemblyReference_Tests
 
                 ITaskItem[] assemblyNames =
                 {
-                    new TaskItem(@"C:\DependsOnNuget\A.dll"), // depends on N, version 1.0.0.0
-                    new TaskItem(@"C:\NugetCache\N\lib\N.dll", // version 2.0.0.0
+                    new TaskItem(@"C:\DependsOnNuGet\A.dll"), // depends on N, version 1.0.0.0
+                    new TaskItem(@"C:\NuGetCache\N\lib\N.dll", // version 2.0.0.0
                         new Dictionary<string, string>
                         {
                             {"ExternallyResolved", "true"}
@@ -123,9 +123,9 @@ namespace Microsoft.Build.UnitTests.ResolveAssemblyReference_Tests
 
                 Assert.True(succeeded);
 
-                uniqueFileExists.ShouldNotContainKey(@"C:\DependsOnNuget\N.winmd");
-                uniqueFileExists.ShouldNotContainKey(@"C:\DependsOnNuget\N.dll");
-                uniqueFileExists.ShouldNotContainKey(@"C:\DependsOnNuget\N.exe");
+                uniqueFileExists.ShouldNotContainKey(@"C:\DependsOnNuGet\N.winmd");
+                uniqueFileExists.ShouldNotContainKey(@"C:\DependsOnNuGet\N.dll");
+                uniqueFileExists.ShouldNotContainKey(@"C:\DependsOnNuGet\N.exe");
             }
             finally
             {

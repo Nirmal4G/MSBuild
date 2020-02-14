@@ -482,7 +482,7 @@ namespace Microsoft.Build.UnitTests.Definition
                 return; // "Registry is not supported under Unix"
             }
 
-            _currentVersionRegistryKey.SetValue("MsBuildOverrideTasksPath", "c:\\Foo");
+            _currentVersionRegistryKey.SetValue("MSBuildOverrideTasksPath", "c:\\Foo");
 
             ToolsetReader reader = GetStandardRegistryReader();
             Dictionary<string, Toolset> values = new Dictionary<string, Toolset>(StringComparer.OrdinalIgnoreCase);
@@ -516,7 +516,7 @@ namespace Microsoft.Build.UnitTests.Definition
         {
             Assert.Throws<InvalidToolsetDefinitionException>(() =>
             {
-                _currentVersionRegistryKey.SetValue("MsBuildOverrideTasksPath", new String[] { "2938304894", "3948394.2.3.3.3" }, RegistryValueKind.MultiString);
+                _currentVersionRegistryKey.SetValue("MSBuildOverrideTasksPath", new String[] { "2938304894", "3948394.2.3.3.3" }, RegistryValueKind.MultiString);
 
                 ToolsetReader reader = GetStandardRegistryReader();
                 Dictionary<string, Toolset> values = new Dictionary<string, Toolset>(StringComparer.OrdinalIgnoreCase);

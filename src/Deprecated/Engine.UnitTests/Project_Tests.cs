@@ -3439,12 +3439,12 @@ namespace Microsoft.Build.UnitTests.Project_Tests
         /// Verify that the programfiles32 property points to the correct location
         /// </summary>
         [Test]
-        public void VerifyMsbuildProgramFiles32ReservedProperty()
+        public void VerifyMSBuildProgramFiles32ReservedProperty()
         {
             MockLogger ml = ObjectModelHelpers.BuildProjectExpectSuccess(@"
                              <Project ToolsVersion=""msbuilddefaulttoolsversion"" xmlns='http://schemas.microsoft.com/developer/msbuild/2003'>
                                 <PropertyGroup>
-                                    <abcdef>$(MsBuildProgramFiles32)</abcdef>
+                                    <abcdef>$(MSBuildProgramFiles32)</abcdef>
                                 </PropertyGroup>
 
                                 <Target Name='t'>

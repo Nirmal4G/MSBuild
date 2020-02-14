@@ -756,7 +756,7 @@ namespace Microsoft.Build.BuildEngine
             EventWaitHandle nodeReadyEvent = null;
 
             string msbuildLocation = Path.Combine(locationOfMSBuildExe, "MSBuild.exe");
-            ErrorUtilities.VerifyThrow(File.Exists(msbuildLocation),"Msbuild.exe cannot be found at: "+msbuildLocation);
+            ErrorUtilities.VerifyThrow(File.Exists(msbuildLocation),"MSBuild.exe cannot be found at: "+msbuildLocation);
 
             bool exitedDueToError = true;
             try

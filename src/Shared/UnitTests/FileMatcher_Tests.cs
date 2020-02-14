@@ -1351,7 +1351,7 @@ namespace Microsoft.Build.UnitTests
             {
                 using (var env = TestEnvironment.Create())
                 {
-                    env.SetEnvironmentVariable("MsBuildCacheFileEnumerations", "1");
+                    env.SetEnvironmentVariable("MSBuildCacheFileEnumerations", "1");
 
                     var testProject = env.CreateTestProjectWithFiles(string.Empty, new[] { "a.cs", "b.cs", "c.cs" });
 

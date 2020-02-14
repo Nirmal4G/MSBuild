@@ -277,7 +277,7 @@ class TestChecker : Checker{
     [Diagnostic[]] CheckLayout([Layout] $l) {return $this.NewDiagnostic("Checked Layout")}
     [Diagnostic[]] CheckFullFrameworkBuildInstance([FullFrameworkBuildInstance] $b) {return $this.NewDiagnostic("Checked FF Build Instance: $($b.Root)")}
     [Diagnostic[]] CheckNetCoreBuildInstance([NetCoreBuildInstance] $b) {return $this.NewDiagnostic("Checked Core Build Instance: $($b.Root)")}
-    [Diagnostic[]] CheckNugetPackage([NugetPackage] $n) {return $this.NewDiagnostic("Checked Nuget Package: $($n.Path)")}
+    [Diagnostic[]] CheckNugetPackage([NugetPackage] $n) {return $this.NewDiagnostic("Checked NuGet Package: $($n.Path)")}
     [Diagnostic[]] CheckVSixPackage([VsixPackage] $v) {return $this.NewDiagnostic("Checked VsixPackage: $($v.Path)")}
 }
 
@@ -303,7 +303,7 @@ class FileChecker : Checker{
         $diags += $this.CheckPathExists($l.VsixPath)
 
         if ($l.NugetPackages.Count -ne $this.ExpectedNumberOfNugetPackages) {
-            $diags += $this.NewDiagnostic("There should be $($this.ExpectedNumberOfNugetPackages) nuget packages in $($l.NugetPackagePath) but $($l.NugetPackages.Count) were found")
+            $diags += $this.NewDiagnostic("There should be $($this.ExpectedNumberOfNugetPackages) NuGet packages in $($l.NugetPackagePath) but $($l.NugetPackages.Count) were found")
         }
 
         return $diags

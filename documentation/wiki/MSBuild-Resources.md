@@ -18,7 +18,7 @@
  * [MSBuildExtensionPack](http://www.msbuildextensionpack.com)
    * Provides a large collection of MSBuild Tasks, MSBuild Loggers and MSBuild TaskFactories.
  * [MSBuilder](https://github.com/MobileEssentials/MSBuilder)
-   * Reusable blocks of MSBuild helpers; MSBuilder's goal is to provide fine-grained nuget packages that can be installed when only a certain MSBuild extension (task, property, target) is needed.
+   * Reusable blocks of MSBuild helpers; MSBuilder's goal is to provide fine-grained NuGet packages that can be installed when only a certain MSBuild extension (task, property, target) is needed.
  * [MSBuildExplorer](https://github.com/mikefourie/MSBuildExplorer)
    * Use MSBuild Explorer to help you find your way around the make-up of your build file(s).
  * [MSBuild Sidekick](http://attrice.info/msbuild)
@@ -28,7 +28,7 @@
      * Install from Chocolatey `cinst MSBuildDumper`.
  * [MSBuild Profiler](https://msbuildprofiler.codeplex.com/)
    * A performance measurement tool for MSBuild scripts. MSBuild Profiler shows a graphical performance output for all your MSBuild scripts.
- * [MsBuildPipeLogger](https://msbuildpipelogger.netlify.com/) ([GitHub](https://github.com/daveaglick/MsBuildPipeLogger))
+ * [MSBuildPipeLogger](https://msbuildpipelogger.netlify.com/) ([GitHub](https://github.com/daveaglick/MSBuildPipeLogger))
    * A logger for MSBuild that sends event data over anonymous or named pipes.
  * [MSBuild Shell Extension](https://msbuildshellex.codeplex.com/) Note: Not supported on Windows 10.
    * Lets you build Visual Studio solutions and projects as well as any MSBuild file through a context menu without opening Visual Studio.

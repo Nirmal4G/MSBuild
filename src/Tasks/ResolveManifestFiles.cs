@@ -752,7 +752,7 @@ namespace Microsoft.Build.Tasks
             if (item.ItemSpec.EndsWith(".dll") && identity == null && !isDotNetCore)
             {
                 // It is possible that a native dll gets passed in here that was declared as a content file
-                // in a referenced nuget package, which will yield null here. We just need to ignore those
+                // in a referenced NuGet package, which will yield null here. We just need to ignore those
                 // for .NET FX case since those aren't actually references we care about. For .NET Core, native
                 // dll can be passed as a reference so we won't ignore it if isDotNetCore is true.
                 return true;
