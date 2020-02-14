@@ -22,4 +22,5 @@
   <ItemGroup>
     <ProjectReference Include="..\StringTools\StringTools.csproj" />
   </ItemGroup>
+
 </Project>

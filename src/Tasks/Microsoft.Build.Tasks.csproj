@@ -1027,4 +1027,5 @@
     -->
     <Content Update="@(Content)" Pack="false" />
   </ItemGroup>
+
 </Project>

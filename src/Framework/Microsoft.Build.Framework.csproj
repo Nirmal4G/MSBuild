@@ -46,4 +46,5 @@
   <ItemGroup>
     <RCResourceFile Include="native.rc" />
   </ItemGroup>
+
 </Project>
