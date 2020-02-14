@@ -6,7 +6,7 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
           created a backup copy.  Incorrect changes to this file will make it
           impossible to load or build your projects from the command-line or the IDE.
 
-This file contains .net framework specific properties, items and targets. They are factored into a Microsoft.NETFramework.targets and Microsoft.NetFramework.props
+This file contains .NET Famework specific properties, items and targets. They are factored into a Microsoft.NETFramework.targets and Microsoft.NETFramework.props
 these two files are used to encapsulate the multi-targeting and framework specific build process.
 
 Copyright (C) Microsoft Corporation. All rights reserved.
@@ -15,14 +15,14 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 <Project>
 
   <PropertyGroup>
-     <ImportByWildcardBeforeMicrosoftNetFrameworkProps Condition="'$(ImportByWildcardBeforeMicrosoftNetFrameworkProps)' == ''">true</ImportByWildcardBeforeMicrosoftNetFrameworkProps>
-     <ImportByWildcardAfterMicrosoftNetFrameworkProps Condition="'$(ImportByWildcardAfterMicrosoftNetFrameworkProps)' == ''">true</ImportByWildcardAfterMicrosoftNetFrameworkProps>
-     <ImportUserLocationsByWildcardBeforeMicrosoftNetFrameworkProps Condition="'$(ImportUserLocationsByWildcardBeforeMicrosoftNetFrameworkProps)' == ''">true</ImportUserLocationsByWildcardBeforeMicrosoftNetFrameworkProps>
-     <ImportUserLocationsByWildcardAfterMicrosoftNetFrameworkProps Condition="'$(ImportUserLocationsByWildcardAfterMicrosoftNetFrameworkProps)' == ''">true</ImportUserLocationsByWildcardAfterMicrosoftNetFrameworkProps>
+     <ImportByWildcardBeforeMicrosoftNETFrameworkProps Condition="'$(ImportByWildcardBeforeMicrosoftNETFrameworkProps)' == ''">true</ImportByWildcardBeforeMicrosoftNETFrameworkProps>
+     <ImportByWildcardAfterMicrosoftNETFrameworkProps Condition="'$(ImportByWildcardAfterMicrosoftNETFrameworkProps)' == ''">true</ImportByWildcardAfterMicrosoftNETFrameworkProps>
+     <ImportUserLocationsByWildcardBeforeMicrosoftNETFrameworkProps Condition="'$(ImportUserLocationsByWildcardBeforeMicrosoftNETFrameworkProps)' == ''">true</ImportUserLocationsByWildcardBeforeMicrosoftNETFrameworkProps>
+     <ImportUserLocationsByWildcardAfterMicrosoftNETFrameworkProps Condition="'$(ImportUserLocationsByWildcardAfterMicrosoftNETFrameworkProps)' == ''">true</ImportUserLocationsByWildcardAfterMicrosoftNETFrameworkProps>
   </PropertyGroup>
 
-  <Import Project="$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportBefore\*" Condition="'$(ImportUserLocationsByWildcardBeforeMicrosoftNetFrameworkProps)' == 'true' and exists('$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportBefore')"/>
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportBefore\*" Condition="'$(ImportByWildcardBeforeMicrosoftNetFrameworkProps)' == 'true' and exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportBefore')"/>
+  <Import Project="$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportBefore\*" Condition="'$(ImportUserLocationsByWildcardBeforeMicrosoftNETFrameworkProps)' == 'true' and Exists('$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportBefore')"/>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportBefore\*" Condition="'$(ImportByWildcardBeforeMicrosoftNETFrameworkProps)' == 'true' and Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportBefore')"/>
 
   <PropertyGroup>
     <!-- By default we want to replace subsets with profiles, but we do need a way to turning off this "upgrade" in case a user needs to target a subset-->
@@ -117,7 +117,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       And before the ImportAfter\* , so users can override it-->
   <Import Project="$(MSBuildToolsPath)\Microsoft.NET.props" />
 
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportAfter\*" Condition="'$(ImportByWildcardAfterMicrosoftNetFrameworkProps)' == 'true' and exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportAfter')"/>
-  <Import Project="$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportAfter\*" Condition="'$(ImportUserLocationsByWildcardAfterMicrosoftNetFrameworkProps)' == 'true' and exists('$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportAfter')"/>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportAfter\*" Condition="'$(ImportByWildcardAfterMicrosoftNETFrameworkProps)' == 'true' and Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportAfter')"/>
+  <Import Project="$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportAfter\*" Condition="'$(ImportUserLocationsByWildcardAfterMicrosoftNETFrameworkProps)' == 'true' and Exists('$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.NETFramework.props\ImportAfter')"/>
 
 </Project>
