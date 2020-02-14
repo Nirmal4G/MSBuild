@@ -26,7 +26,7 @@ namespace Microsoft.Build.Evaluation
 
             PropertyName = propertyName;
             SearchPaths = searchPaths;
-            MsBuildPropertyFormat = $"$({PropertyName})";
+            MSBuildPropertyFormat = $"$({PropertyName})";
         }
 
         public ProjectImportPathMatch(ITranslator translator)
@@ -42,7 +42,7 @@ namespace Microsoft.Build.Evaluation
         /// <summary>
         /// Returns the corresponding property name - eg. "$(MSBuildExtensionsPath32)"
         /// </summary>
-        public string MsBuildPropertyFormat;
+        public string MSBuildPropertyFormat;
 
         /// <summary>
         /// Enumeration of the search paths for the property.
@@ -52,7 +52,7 @@ namespace Microsoft.Build.Evaluation
         public void Translate(ITranslator translator)
         {
             translator.Translate(ref PropertyName);
-            translator.Translate(ref MsBuildPropertyFormat);
+            translator.Translate(ref MSBuildPropertyFormat);
             translator.Translate(ref SearchPaths);
         }
 

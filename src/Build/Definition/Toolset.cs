@@ -385,7 +385,7 @@ namespace Microsoft.Build.Evaluation
 
             foreach (var searchPath in _propertySearchPathsTable.Values)
             {
-                if (expression.IndexOf(searchPath.MsBuildPropertyFormat, StringComparison.OrdinalIgnoreCase) >= 0)
+                if (expression.IndexOf(searchPath.MSBuildPropertyFormat, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     return searchPath;
                 }
