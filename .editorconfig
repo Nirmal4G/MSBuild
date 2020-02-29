@@ -34,7 +34,7 @@ tab_width = 4
 indent_style = tab
 
 # MSBuild XML Build files
-[*.{props,targets,tasks,overridetasks}]
+[*.{props,targets,tasks,overridetasks,msb}]
 indent_size = 2
 
 # MSBuild XML Project files
