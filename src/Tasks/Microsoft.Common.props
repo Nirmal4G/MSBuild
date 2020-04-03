@@ -77,9 +77,11 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
   <Import Project="$(CustomBeforeMicrosoftCommonProps)" Condition="'$(CustomBeforeMicrosoftCommonProps)' != '' and Exists('$(CustomBeforeMicrosoftCommonProps)')" />
 
-  <!-- This is used to determine whether Microsoft.Common.targets needs to import
+  <!--
+      This is used to determine whether Microsoft.Common.targets needs to import
       Microsoft.Common.props itself, or whether it has been imported previously,
-      e.g. by the project itself. -->
+      e.g. by the project itself.
+  -->
   <PropertyGroup>
     <MicrosoftCommonPropsHasBeenImported>true</MicrosoftCommonPropsHasBeenImported>
   </PropertyGroup>
@@ -101,9 +103,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   <Import Project="$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Imports\Microsoft.Common.props\ImportAfter\*" Condition="'$(ImportUserLocationsByWildcardAfterMicrosoftCommonProps)' == 'true' and exists('$(MSBuildUserExtensionsPath)\$(MSBuildToolsVersion)\Imports\Microsoft.Common.props\ImportAfter')"/>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Imports\Microsoft.Common.props\ImportAfter\*" Condition="'$(ImportByWildcardAfterMicrosoftCommonProps)' == 'true' and exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Imports\Microsoft.Common.props\ImportAfter')"/>
 
-  <!--
-      Import NuGet.props file.
-  -->
+  <!-- Import NuGet.props file. -->
   <PropertyGroup>
     <MSBuildUseVisualStudioDirectoryLayout Condition="'$(MSBuildUseVisualStudioDirectoryLayout)'==''">$([MSBuild]::IsRunningFromVisualStudio())</MSBuildUseVisualStudioDirectoryLayout>
     <NuGetPropsFile Condition="'$(NuGetPropsFile)'=='' and '$(MSBuildUseVisualStudioDirectoryLayout)'=='true'">$([MSBuild]::GetToolsDirectory32())\..\..\..\Common7\IDE\CommonExtensions\Microsoft\NuGet\NuGet.props</NuGetPropsFile>
