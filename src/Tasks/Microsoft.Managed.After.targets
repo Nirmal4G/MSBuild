@@ -25,7 +25,8 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IsGraphBuild)' == 'true'">
-    <!-- WPF projects generate a project with a random name at build time and then build the project via the IBuildEngine callbacks.
+    <!--
+        WPF projects generate a project with a random name at build time and then build the project via the IBuildEngine callbacks.
         Detect WPF, and exclude the generated project from static graph isolation constraint checking.
         Escape the item to avoid eager evaluation of the wildcards.
     -->
