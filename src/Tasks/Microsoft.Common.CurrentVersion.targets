@@ -822,11 +822,11 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <Message Condition="'$(DesignTimeBuild)' != 'true'" Text="Platform=$(Platform)" Importance="Low" />
 
     <!-- Although we try to ensure a trailing slash, it's possible to circumvent this if the property is set on the command line -->
-    <Error Condition="'$(OutDir)' != '' and !HasTrailingSlash('$(OutDir)')" Text="The OutDir property must end with a trailing slash." />
-    <Error Condition="'$(OutputPath)' != '' and !HasTrailingSlash('$(OutputPath)')" Text="The OutputPath must end with a trailing slash." />
-    <Error Condition="'$(BaseOutputPath)' != '' and !HasTrailingSlash('$(BaseOutputPath)')" Text="The BaseOutputPath must end with a trailing slash." />
-    <Error Condition="'$(IntermediateOutputPath)' != '' and !HasTrailingSlash('$(IntermediateOutputPath)')" Text="The IntermediateOutputPath must end with a trailing slash." />
     <Error Condition="'$(BaseIntermediateOutputPath)' != '' and !HasTrailingSlash('$(BaseIntermediateOutputPath)')" Text="The BaseIntermediateOutputPath must end with a trailing slash." />
+    <Error Condition="'$(IntermediateOutputPath)' != '' and !HasTrailingSlash('$(IntermediateOutputPath)')" Text="The IntermediateOutputPath must end with a trailing slash." />
+    <Error Condition="'$(BaseOutputPath)' != '' and !HasTrailingSlash('$(BaseOutputPath)')" Text="The BaseOutputPath must end with a trailing slash." />
+    <Error Condition="'$(OutputPath)' != '' and !HasTrailingSlash('$(OutputPath)')" Text="The OutputPath must end with a trailing slash." />
+    <Error Condition="'$(OutDir)' != '' and !HasTrailingSlash('$(OutDir)')" Text="The OutDir property must end with a trailing slash." />
 
     <!-- Also update the value of PlatformTargetAsMSBuildArchitecture per the value of Prefer32Bit.  We are doing
          this here because Prefer32Bit may be set anywhere in the targets, so we can't depend on it having the
