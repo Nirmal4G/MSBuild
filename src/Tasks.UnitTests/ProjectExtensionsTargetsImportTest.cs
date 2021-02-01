@@ -1,4 +1,4 @@
-﻿// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.IO;
 
@@ -11,9 +11,9 @@ namespace Microsoft.Build.UnitTests
     /// </summary>
     sealed public class ProjectExtensionsTargetsImportTest : ProjectExtensionsImportTestBase
     {
-        protected override string CustomImportProjectPath => Path.Combine(ObjectModelHelpers.TempProjectDir, "obj", $"{Path.GetFileName(_projectRelativePath)}.custom.targets");
+        protected override string CustomImportProjectPath => Path.Combine(ObjectModelHelpers.TempProjectDir, "ext", $"{Path.GetFileName(_projectRelativePath)}.custom.targets");
 
-        protected override string ImportProjectPath => Path.Combine(Path.GetDirectoryName(_projectRelativePath), "obj", $"{Path.GetFileName(_projectRelativePath)}.custom.targets");
+        protected override string ImportProjectPath => Path.Combine(Path.GetDirectoryName(_projectRelativePath), "ext", $"{Path.GetFileName(_projectRelativePath)}.custom.targets");
 
         protected override string PropertyNameToEnableImport => "ImportProjectExtensionTargets";
 

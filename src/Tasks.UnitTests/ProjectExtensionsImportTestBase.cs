@@ -1,4 +1,4 @@
-﻿// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Microsoft.Build.Evaluation;
 using System;
@@ -173,25 +173,25 @@ namespace Microsoft.Build.UnitTests
 
             MockLogger logger = new MockLogger();
 
-            project.Build("_CheckForInvalidConfigurationAndPlatform", new[] { logger }).ShouldBeFalse();
+            project.Build("_CheckForInvalidOutputPaths", new[] {logger}).ShouldBeFalse();
 
             logger.Errors.Select(i => i.Code).FirstOrDefault().ShouldBe("MSB3540");
         }
 
         /// <summary>
-        /// Ensures that an error is logged if BaseIntermediateOutputPath is modified after it was set by Microsoft.Common.props and
-        /// EnableBaseIntermediateOutputPathMismatchWarning is 'true'.
+        /// Ensures that an error is logged if BuildDir is modified after it was set by Microsoft.Common.props and
+        /// EnableBuildDirMismatchWarning is 'true'.
         /// </summary>
         [Fact]
-        public void WarningIfBaseIntermediateOutputPathIsChangedInBodyOfProject()
+        public void WarningIfBuildDirIsChangedInBodyOfProject()
         {
             Project project = ObjectModelHelpers.LoadProjectFileInTempProjectDirectory(ObjectModelHelpers.CreateFileInTempProjectDirectory(_projectRelativePath, @"
                 <Project DefaultTargets=`Build` ToolsVersion=`msbuilddefaulttoolsversion`>
                     <Import Project=`$(MSBuildBinPath)\Microsoft.Common.props` />
 
                     <PropertyGroup>
-                        <EnableBaseIntermediateOutputPathMismatchWarning>true</EnableBaseIntermediateOutputPathMismatchWarning>
-                        <BaseIntermediateOutputPath>foo</BaseIntermediateOutputPath>
+                        <EnableBuildDirMismatchWarning>true</EnableBuildDirMismatchWarning>
+                        <BuildDir>foo</BuildDir>
                     </PropertyGroup>
 
                     <Import Project=`$(MSBuildBinPath)\Microsoft.CSharp.targets` />
@@ -200,7 +200,7 @@ namespace Microsoft.Build.UnitTests
 
             MockLogger logger = new MockLogger();
 
-            project.Build("_CheckForInvalidConfigurationAndPlatform", new[] { logger }).ShouldBeTrue();
+            project.Build("_CheckForInvalidOutputPaths", new[] { logger }).ShouldBeTrue();
 
             logger.Warnings.Select(i => i.Code).FirstOrDefault().ShouldBe("MSB3539");
         }
